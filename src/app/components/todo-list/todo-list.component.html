@@ -1,0 +1,33 @@
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-8 offset-lg2">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <span class="tittle" ><h3><strong>ToDo List</strong></h3></span>
+                        <button class="btn btn-success float-end" [routerLink]="['create-task']">Nueva Tarea</button>
+                        <table *ngIf="listTasks.length > 0" class="table table-striped mt-3">
+                            <thead>
+                              <tr>
+                                <th scope="col">Tarea</th>
+                                <th scope="col">Responsable</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr  *ngFor="let task of listTasks">
+                                <td>{{ task.description }}</td>
+                                <td>{{ task.responsable }}</td>
+                                <td>
+                                    <i [routerLink]="['/edit-task', task._id]" class="fas fa-edit"></i>
+                                    <i (click)="deleteTask(task._id)" class="fas fa-trash-alt"></i>                                     
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                         <h5 style="text-align: start; margin-top: 10px;" *ngIf="listTasks.length == 0">No hay tareas para mostrar</h5> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
